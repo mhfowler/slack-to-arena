@@ -2,7 +2,7 @@ import os, json
 
 
 # project path
-PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
+PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 print('PROJECT_PATH: {}'.format(PROJECT_PATH))
 
 
