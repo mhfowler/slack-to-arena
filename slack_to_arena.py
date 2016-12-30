@@ -8,10 +8,11 @@ from slacktoarena.utils.arena_syncer import ArenaSyncer
 
 def slack_to_arena(path_to_slack_export, arena_username):
     """
-
-    :param path_to_slack_export:
-    :param arena_username:
-    :return:
+    parses a slack export at the given path, and syncs all links found in all channels to the are.na
+    of the given username
+    :param path_to_slack_export: string path to unzipped slack export
+    :param arena_username: string username of are.na user to sync to
+    :return: None
     """
     print('++ archiving links from {} to the are.na user {}'.format(path_to_slack_export, arena_username))
 
@@ -25,6 +26,10 @@ def slack_to_arena(path_to_slack_export, arena_username):
 
     # for each channel, sync all of its links to arena
     for channel_title, links in slack_channels_dict.items():
+        # if the channel was already synced, let's skip it for now
+        if arena_syncer.has_channel(channel_title):
+            continue
+        # if the channel was not already synced, then sync it
         print('++ saving links for slack channel: {}'.format(channel_title))
         for link in links:
             try:

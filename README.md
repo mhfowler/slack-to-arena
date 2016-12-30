@@ -3,6 +3,11 @@
 Parses a slack export and uploads all links to are.na
 
 
+# note
+
+still in progress, but will be finished soon
+
+
 # setup
 
 0. `git clone github.com/mhfowler/slacktoarena ~/slacktoarena`
