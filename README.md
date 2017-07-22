@@ -5,7 +5,7 @@ Parses a slack export and uploads all links to are.na
 
 # note
 
-still in progress, but will be finished soon
+still in progress
 
 
 # setup
