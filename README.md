@@ -10,7 +10,7 @@ still in progress
 
 # setup
 
-0. `git clone github.com/mhfowler/slacktoarena ~/slacktoarena`
+0. `git clone https://github.com/mhfowler/slack-to-arena.git`
 
 1. `cd ~/slacktoarena` 
 
