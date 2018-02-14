@@ -6,7 +6,6 @@ This tool helps you to parse a slack export and upload any links
  that were shared in slack messages to are.na, 
  a way of archiving links and information shared in a slack group.
 
-
 # 1. export from slack
 
 Follow the instructions on slack's website to create a standard export
