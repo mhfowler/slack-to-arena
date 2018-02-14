@@ -7,7 +7,7 @@ import datetime
 from slacktoarena.utils.constants import PROJECT_PATH
 
 
-def parse_slack_export(input_path, save_links=False, save_files=True, save_path=None):
+def parse_slack_export(input_path, save_links=True, save_files=False, save_path=None):
     """
     parses a slack export found at input_path
     and returns
@@ -18,11 +18,15 @@ def parse_slack_export(input_path, save_links=False, save_files=True, save_path=
     """
     print('++ parsing slack export at location: {}'.format(input_path))
 
+    links_dict = None
     if save_links:
-        parse_links_from_slack_export(input_path=input_path)
+        links_dict = parse_links_from_slack_export(input_path=input_path)
 
     if save_files:
         save_files_from_slack_export(input_path=input_path, save_path=save_path)
+
+    # return
+    return links_dict
 
 
 def get_channels(input_path):
@@ -72,11 +76,10 @@ def parse_links_from_slack_export(input_path):
     for channel in channels:
         messages = get_messages_from_channel(input_path, channel)
         for message in messages:
-            channel_links = set([])
-            channel_links_dict[channel] = channel_links
+            channel_links = channel_links_dict.setdefault(channel, set([]))
             msg = message.get('text')
             if msg:
-                for match in re.findall('<(\S+)>', msg):
+                for match in re.findall('<([^>]*)>', msg):
                     if 'http' in match:
                         channel_links.add(match)
     # return dictionary of channels (where all values are lists of links found in that channel)
@@ -86,7 +89,8 @@ def parse_links_from_slack_export(input_path):
 def save_files_from_slack_export(input_path, save_path):
     """
     finds all images in slack export, and saves them to save_path
-    :param input_path:
+    :param input_path: string path to slack export
+    :param save_path: string output path
     :return:
     """
     # get the channels from the input_path
