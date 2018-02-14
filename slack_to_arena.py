@@ -71,7 +71,7 @@ def slack_to_arena(path_to_slack_export, arena_username, save_images=False):
 if __name__ == '__main__':
 
     # boolean flag to parse arguments from CLI or read hardcoded args
-    USE_CLI = False
+    USE_CLI = True
 
     # parse arguments from command line
     if USE_CLI:
