@@ -1,36 +1,38 @@
 # slack-to-arena
 
-Parses a slack export and uploads all links to are.na
+Even if you have a free slack you can export your entire slack history into a .json
+
+This tool helps you to parse a slack export and upload any links 
+ that were shared in slack messages to are.na, 
+ a way of archiving links and information shared in a slack group.
 
 
-# note
+# 1. export from slack
 
-still in progress, but will be finished soon
+Follow the instructions on slack's website to create a standard export
+from your slack group (you need to be an admin of the group):
+https://get.slack.help/hc/en-us/articles/201658943-Export-data-and-message-history
+
+Once the export is finished you will receive an email and can download a .zip
+of the slack export. 
 
 
-# setup
+# 2. setup an are.na application
 
-0. `git clone github.com/mhfowler/slacktoarena ~/slacktoarena`
+Login or create an account on are.na (it might make sense to create a new account
+just for this archive).
+
+Create an are.na application to integrate with the are.na API 
+
+
+# 3. run the exporter (it takes a while, may want to run overnight)
+
+0. `git clone https://github.com/mhfowler/slacktoarena ~/slacktoarena`
 
 1. `cd ~/slacktoarena` 
 
 2. `cp secret.json.sample secret.json`
 
-3. visit https://dev.are.na/ and create an are.na application
-
-4. from you are.na application page, click 'regenerate token'
-
-5. put the token in secret.json
-
-6. `pip install -r requirements.txt`
-
-
-# run
-
-1. export slack from the slack website
-
-2. unzip the export
-
-3. `python slacktoarena.py <path_to_slack_export> <arena_username>`
+3. `python slacktoarena.py <path_to_slack_export> <arena_username> <arena_token>`
 
 
