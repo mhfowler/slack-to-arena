@@ -31,8 +31,8 @@ Create an are.na application to integrate with the are.na API
 
 1. `cd ~/slacktoarena` 
 
-2. `cp secret.json.sample secret.json`
+2. `cp secret.json.sample secret.json # and enter your token in secret.json`
 
-3. `python slacktoarena.py <path_to_slack_export> <arena_username> <arena_token>`
+3. `python slacktoarena.py <path_to_slack_export> <arena_username>`
 
 
